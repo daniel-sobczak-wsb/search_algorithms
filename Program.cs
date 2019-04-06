@@ -6,15 +6,24 @@ namespace search
     {
         public static void binarySearch(int l, int r, int[] array, int m, int toSearch)
         {
-            if (l > r)
+            /* if (l > r)
                 System.Console.WriteLine("Nie znaleziono podanego elementu");
-            else if (array[m] == toSearch)
-                System.Console.WriteLine("Element {0} znaleziony w indeksie {1}", toSearch, m);
+            else  */
+            do
+            {
+                m = (l+r) / 2;
+                if (array[m] == toSearch)
+                {
+                    System.Console.WriteLine("Element {0} znaleziony w indeksie {1}", toSearch, m);
+                    break;
+                }
                 else if (array[m] != toSearch)
-                    if (array[m] < toSearch)
-                        l = m + 1;
-                    else
+                    if (array[m] > toSearch)
                         r = m - 1;
+                    else
+                        l = m + 1;
+            } while (!(l > r));
+            
         }
         
         public static void Main(string[] args)
