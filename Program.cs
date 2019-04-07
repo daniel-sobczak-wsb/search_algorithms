@@ -6,9 +6,6 @@ namespace search
     {
         public static void binarySearch(int l, int r, int[] array, int m, int toSearch)
         {
-            /* if (l > r)
-                System.Console.WriteLine("Nie znaleziono podanego elementu");
-            else  */
             do
             {
                 m = (l+r) / 2;
@@ -23,7 +20,8 @@ namespace search
                     else
                         l = m + 1;
             } while (!(l > r));
-            
+            if (l > r)
+                System.Console.WriteLine("Nie znaleziono podanego elementu");
         }
         
         public static void Main(string[] args)
