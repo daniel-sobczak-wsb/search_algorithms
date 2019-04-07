@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace search
 {
@@ -34,7 +35,9 @@ namespace search
         
         public static void Main(string[] args)
         {
-            int count = 1;            
+            int count = 1;  
+            double elapsedSeconds = 0;
+            double elapsedTime = 0;          
             for (int k = 2000000; k < (int) Math.Pow(2, 28); k += 100000)
             {
                 int[] tab = new int[k];
@@ -49,7 +52,13 @@ namespace search
                 int right = tab.Length - 1;
                 int middle = (left + right) / 2;
 
+                long start = Stopwatch.GetTimestamp();
                 binarySearch(left, right, tab, middle, 1) ;
+                long stop = Stopwatch.GetTimestamp();
+
+                elapsedTime = stop - start;
+                elapsedSeconds = elapsedTime * (1.0 / Stopwatch.Frequency);
+                System.Console.WriteLine(elapsedSeconds);
             }
             Console.ReadKey();
 
