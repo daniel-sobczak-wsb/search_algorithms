@@ -15,7 +15,7 @@ namespace search
                 if (array[i] == toSearch) {
                     operationCount++;
                     resultCode = 1;
-                    break;
+                    return (result: resultCode, opernum: operationCount);
                 }
                 else
                     operationCount++;
@@ -44,7 +44,7 @@ namespace search
                 //System.Console.WriteLine("Utworzona tablicę nr {0}", count);
                 //count++;
 
-                int number = 1001;
+                int number = tab[(0 + (tab.Length - 1) / 2)];
                 /* int left = 0;
                 int right = tab.Length - 1;
                 int middle = (left + right) / 2; */
