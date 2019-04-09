@@ -5,38 +5,24 @@ namespace search
 {
     class Program
     {
-        public static (int result, int opernum) binarySearch(int l, int r, int[] array, int m, int toSearch)
+        public static (int result, int opernum) linearSearch(int[] array, int toSearch)
         {
             int operationCount = 0;
             int resultCode = 0;
 
-            do
+            for (int i = 0; i < array.Length; i++)
             {
-                m = (l+r) / 2;
-                if (array[m] == toSearch)
-                {
+                if (array[i] == toSearch) {
                     operationCount++;
-                    //System.Console.WriteLine("Element {0} znaleziony w indeksie {1}", toSearch, m);
                     resultCode = 1;
                     break;
                 }
-                else if (array[m] != toSearch)
-                    if (array[m] > toSearch) {
-                        r = m - 1;
-                        operationCount++;
-                    }
-                    else {
-                        l = m + 1;
-                        operationCount++;
-                    }
-            } while (!(l > r));
-            if (l > r)
-            {
-                System.Console.WriteLine("Nie znaleziono podanego elementu");
-                resultCode = -1;
+                else
+                    operationCount++;
             }
-            //System.Console.WriteLine("Liczba operacji: {0}", operationCount);
            
+            //System.Console.WriteLine("Liczba operacji: {0}", operationCount);
+            resultCode = -1;
            //return operationCount;
            return (result: resultCode, opernum: operationCount);
         }
@@ -44,27 +30,27 @@ namespace search
         public static void Main(string[] args)
         {
             Random rand = new Random();
-            int count = 1;  
+            //int count = 1;  
             double elapsedSeconds = 0;
             double elapsedTime = 0;          
-            for (int k = 2000000; k < (int) Math.Pow(2, 28); k += 100000)
+            for (int k = 100000000; k < (int) Math.Pow(2, 28); k += 1000000)
             {
                 int[] tab = new int[k];
                 
                 for (int i = 0; i < tab.Length; i++)
                 {
-                    tab[i] = i+1;
+                    tab[i] = rand.Next(1, 1000);
                 }
                 //System.Console.WriteLine("Utworzona tablicę nr {0}", count);
-                count++;
+                //count++;
 
-                int number = rand.Next(1, tab.Length);
-                int left = 0;
+                int number = 1001;
+                /* int left = 0;
                 int right = tab.Length - 1;
-                int middle = (left + right) / 2;
+                int middle = (left + right) / 2; */
  
                 long start = Stopwatch.GetTimestamp();
-                (int result, int opernum) = binarySearch(left, right, tab, middle, number) ;
+                (int result, int opernum) = linearSearch(tab, number) ;
                 long stop = Stopwatch.GetTimestamp();
  
                 elapsedTime = stop - start;
