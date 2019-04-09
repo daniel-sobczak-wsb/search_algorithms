@@ -72,6 +72,19 @@ namespace search
                 System.Console.WriteLine("{0};{1};{2:F8};{3};{4}", k, number, elapsedSeconds, result, opernum);
             }
             Console.ReadKey();
+ 
+            /* int[] table = {1, 2, 5, 8, 9, 11, 15, 20};
+ 
+            int left = 0;
+            int right = table.Length - 1;
+            int middle = (left + right) / 2;
+ 
+            System.Console.WriteLine("Podaj liczbę do wyszukania");
+            int number = int.Parse(Console.ReadLine());
+ 
+            binarySearch(left, right, table, middle, number) ;          
+ 
+            Console.ReadKey(); */
         }
     }
 }
