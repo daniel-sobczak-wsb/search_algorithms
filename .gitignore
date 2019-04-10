@@ -1,4 +1,4 @@
 bin/Debug/netcoreapp2.1/
-obj/
+obj/*
 /Program.cs
 
