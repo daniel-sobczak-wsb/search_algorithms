@@ -1,4 +1,6 @@
 bin/Debug/netcoreapp2.1/
 obj/*
 /Program.cs
-
+/.vscode
+/search.csproj
+Sprawozdanie.docx
