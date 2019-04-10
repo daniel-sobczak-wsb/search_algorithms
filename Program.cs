@@ -5,7 +5,7 @@ namespace search
 {
     class Program
     {
-        public static (int result, int opernum) linearSearch(int[] array, int toSearch)
+        public static int linearSearch(int[] array, int toSearch, int result_code)
         {
             int operationCount = 0;
             int resultCode = 0;
@@ -15,7 +15,7 @@ namespace search
                 if (array[i] == toSearch) {
                     operationCount++;
                     resultCode = 1;
-                    return (result: resultCode, opernum: operationCount);
+                    return resultCode;
                 }
                 else
                     operationCount++;
@@ -24,15 +24,17 @@ namespace search
             //System.Console.WriteLine("Liczba operacji: {0}", operationCount);
             resultCode = -1;
            //return operationCount;
-           return (result: resultCode, opernum: operationCount);
+           return resultCode;
         }
        
         public static void Main(string[] args)
         {
             Random rand = new Random();
-            //int count = 1;  
+            //int count = 1; 
+            int result = 0; 
             double elapsedSeconds = 0;
-            double elapsedTime = 0;          
+            double elapsedTime = 0; 
+                    
             for (int k = 100000000; k < (int) Math.Pow(2, 28); k += 1000000)
             {
                 int[] tab = new int[k];
@@ -50,12 +52,12 @@ namespace search
                 int middle = (left + right) / 2; */
  
                 long start = Stopwatch.GetTimestamp();
-                (int result, int opernum) = linearSearch(tab, number) ;
+                result = linearSearch(tab, number, result) ;
                 long stop = Stopwatch.GetTimestamp();
  
                 elapsedTime = stop - start;
                 elapsedSeconds = elapsedTime * (1.0 / Stopwatch.Frequency);
-                System.Console.WriteLine("{0};{1};{2:F8};{3};{4}", k, number, elapsedSeconds, result, opernum);
+                System.Console.WriteLine("{0};{1};{2:F8};{3}", k, number, elapsedSeconds, result);
             }
             Console.ReadKey();
  
