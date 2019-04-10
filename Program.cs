@@ -33,7 +33,9 @@ namespace search
             //int count = 1; 
             int result = 0; 
             double elapsedSeconds = 0;
-            double elapsedTime = 0; 
+            double elapsedTime = 0;
+
+            System.Console.WriteLine("k;number;elapsed_seconds;result_code"); 
                     
             for (int k = 100000000; k < (int) Math.Pow(2, 28); k += 1000000)
             {
